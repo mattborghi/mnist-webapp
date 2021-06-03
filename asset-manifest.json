@@ -3,18 +3,18 @@
     "main.css": "/mnist-webapp/static/css/main.3f2f519f.chunk.css",
     "main.js": "/mnist-webapp/static/js/main.e579e8a1.chunk.js",
     "main.js.map": "/mnist-webapp/static/js/main.e579e8a1.chunk.js.map",
-    "runtime-main.js": "/mnist-webapp/static/js/runtime-main.bb30c9f6.js",
-    "runtime-main.js.map": "/mnist-webapp/static/js/runtime-main.bb30c9f6.js.map",
+    "runtime-main.js": "/mnist-webapp/static/js/runtime-main.7d6daca7.js",
+    "runtime-main.js.map": "/mnist-webapp/static/js/runtime-main.7d6daca7.js.map",
     "static/js/2.52a0c9ef.chunk.js": "/mnist-webapp/static/js/2.52a0c9ef.chunk.js",
     "static/js/2.52a0c9ef.chunk.js.map": "/mnist-webapp/static/js/2.52a0c9ef.chunk.js.map",
-    "static/js/3.d40c4d26.chunk.js": "/mnist-webapp/static/js/3.d40c4d26.chunk.js",
-    "static/js/3.d40c4d26.chunk.js.map": "/mnist-webapp/static/js/3.d40c4d26.chunk.js.map",
+    "static/js/3.66f28c09.chunk.js": "/mnist-webapp/static/js/3.66f28c09.chunk.js",
+    "static/js/3.66f28c09.chunk.js.map": "/mnist-webapp/static/js/3.66f28c09.chunk.js.map",
     "index.html": "/mnist-webapp/index.html",
     "static/css/main.3f2f519f.chunk.css.map": "/mnist-webapp/static/css/main.3f2f519f.chunk.css.map",
     "static/js/2.52a0c9ef.chunk.js.LICENSE.txt": "/mnist-webapp/static/js/2.52a0c9ef.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.bb30c9f6.js",
+    "static/js/runtime-main.7d6daca7.js",
     "static/js/2.52a0c9ef.chunk.js",
     "static/css/main.3f2f519f.chunk.css",
     "static/js/main.e579e8a1.chunk.js"
