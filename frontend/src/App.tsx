@@ -3,46 +3,46 @@ import React, { useEffect, useState } from "react";
 import { Grid, Button } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 
-import WritingCanvas from "./components/WritingCanvas";
+// import WritingCanvas from "./components/WritingCanvas";
 import ModelPredict from "./components/ModelPredict";
 
 const useStyles = makeStyles((theme) => ({
   item: {
-    border: "1px solid red",
-    height: "90vh",
-    // padding: 20,
+    border: "3px solid red",
+    height: "83vh",
   },
   container: {
     padding: 20,
   },
   button: {
-    // border: "1px solid red",
-    // alignContent: "center",
-    // height: "5vh",
     textAlign: "center",
-    // padding: 20,
   },
   canvas: {
     width: "100%",
     height: "100%",
   },
+  image: {
+    width: "100%",
+    height: "100%",
+    textAlign: "center",
+  },
+  title: {
+    textAlign: "center",
+    padding: 0,
+    margin: 0,
+  },
 }));
 
 function App() {
   const classes = useStyles();
-  const runModel = ModelPredict();
+  const [runModel] = ModelPredict();
   const [image, setImage] = useState("");
-  const [canvas, setCanvas] = useState();
-  const [context, setContext] = useState();
 
   useEffect(() => {
     if (runModel) {
       // From https://www.html5canvastutorials.com/labs/html5-canvas-paint-application/
       var canvas: any = document.getElementById("myCanvas");
-      setCanvas(canvas);
       var context = canvas.getContext("2d");
-      console.log(typeof context);
-      setContext(context);
       var paint: any = document.getElementById("paint");
       var compuetedStyle = getComputedStyle(paint);
       canvas.width = parseInt(compuetedStyle.getPropertyValue("width"));
@@ -67,7 +67,7 @@ function App() {
       context.lineWidth = 25;
       context.lineJoin = "round";
       context.lineCap = "round";
-      context.strokeStyle = "#0000FF";
+      context.strokeStyle = "red";
 
       canvas.addEventListener(
         "mousedown",
@@ -82,40 +82,51 @@ function App() {
       canvas.addEventListener(
         "mouseup",
         function () {
-          // $("#number").html('<img id="spinner" src="spinner.gif"/>');
           canvas.removeEventListener("mousemove", onPaint, false);
           var img = new Image();
           img.onload = function () {
             context.drawImage(img, 0, 0, 28, 28);
             var data = context.getImageData(0, 0, 28, 28).data;
+            // for (var j = 0; j < data.length; ++j) {
+            //   if (data[j] !== 0) {
+            //     console.log(data[j]);
+            //   }
+            // }
             var input = [];
-            for (var i = 0; i < data.length; i += 4) {
-              input.push(data[i + 2] / 255);
-              // console.log(data[i + 2] / 255);
+            for (var j = 0; j < data.length; j += 4) {
+              var res =
+                (data[j] + data[j + 1] + data[j + 2] + data[j + 3]) / 4.0;
+              input.push(res / 255);
+              // input.push(data[j + 2] / 255);
             }
-            runModel(input);
-            // predict(input);
-            // console.log(input);
+            // Print the whole array of data
+            // console.log(JSON.stringify(input, null, 1));
+            if (input.every((item) => item === 0)) {
+              console.error("Can't be all zeros!");
+            } else {
+              runModel(input, setImage);
+            }
           };
           img.src = canvas.toDataURL("image/png");
         },
         false
       );
-
-      // runModel(image);
     }
-  }, [image, runModel]);
+  }, [runModel]);
 
   return (
     <Grid
       container
       className={classes.container}
-      // spacing={4}
       direction="row"
       justify="space-around"
       alignItems="center"
     >
+      <Grid className={classes.title} item xs={12}>
+        <h1>MNIST Number Predictor</h1>
+      </Grid>
       <Grid className={classes.item} item xs={12} sm={5}>
+        {/* <h2 className={classes.title}>Write here: </h2> */}
         {/* <WritingCanvas setImage={setImage} /> */}
         <div id="paint" className={classes.canvas}>
           <canvas id="myCanvas"></canvas>
@@ -123,16 +134,28 @@ function App() {
       </Grid>
       <Grid item sm={2}></Grid>
       <Grid className={classes.item} item xs={12} sm={5}>
-        None
+        <div id="number" className={classes.image}>
+          <svg
+            width="100%"
+            height="100%"
+            viewBox="0 0 48 1"
+            xmlns="http://www.w3.org/2000/svg"
+            focusable="false"
+            style={{ caretColor: "transparent" }}
+          >
+            {image !== "" && (
+              <text x="0" y="0" fill="black" fontSize="30%">
+                Predicted:{" "}
+              </text>
+            )}
+            <text x="30" y="5" fill="red">
+              {image}
+            </text>
+          </svg>
+        </div>
       </Grid>
       <Grid className={classes.button} item xs>
-        <Button
-          variant="outlined"
-          onClick={
-            () => null
-            // context && context.clearRect(0, 0, canvas.width, canvas.height)
-          }
-        >
+        <Button variant="outlined" onClick={() => setImage("")}>
           Clear
         </Button>
       </Grid>
