@@ -4,9 +4,9 @@ Github pages deployment of a simple machine learning model that uses MNIST datab
 
 ## Instructions
 
-0. In order to play with the machine learning model use `jupyter-notebook`.
+- In order to play with the machine learning model use `jupyter-notebook`.
 
-1. Local development of the frontend
+- Local development of the frontend
 
 ```sh
 cd frontend
