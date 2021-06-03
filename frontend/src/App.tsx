@@ -55,6 +55,42 @@ function App() {
         context.stroke();
       };
 
+      // http://bencentra.com/code/2014/12/05/html5-canvas-touch-events.html
+      // Set up touch events for mobile, etc
+      canvas.addEventListener(
+        "touchstart",
+        function (e: any) {
+          var touch = e.touches[0];
+          canvas.dispatchEvent(
+            new MouseEvent("mousedown", {
+              clientX: touch.clientX,
+              clientY: touch.clientY,
+            })
+          );
+        },
+        false
+      );
+      canvas.addEventListener(
+        "touchend",
+        function (e: any) {
+          canvas.dispatchEvent(new MouseEvent("mouseup", {}));
+        },
+        false
+      );
+      canvas.addEventListener(
+        "touchmove",
+        function (e: any) {
+          var touch = e.touches[0];
+          canvas.dispatchEvent(
+            new MouseEvent("mousemove", {
+              clientX: touch.clientX,
+              clientY: touch.clientY,
+            })
+          );
+        },
+        false
+      );
+
       canvas.addEventListener(
         "mousemove",
         function (e: any) {
