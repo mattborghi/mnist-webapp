@@ -10,7 +10,7 @@ Github pages deployment of a simple machine learning model that uses MNIST datab
 
 ```sh
 cd frontend
-yarn add
+yarn install
 yarn start
 ```
 
