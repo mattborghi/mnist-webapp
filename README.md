@@ -4,13 +4,28 @@ Github pages deployment of a simple machine learning model that uses MNIST datab
 
 ## Instructions
 
+
+### Model development
+
 - In order to play with the machine learning model use `jupyter-notebook`.
 
 ![image](./assets/img/model.png)
 
 **Figure 1.** Model summary table. 
 
-- Local development of the frontend
+### Frontend development
+
+Make sure you have installed first [`npm`](https://www.npmjs.com/get-npm) and then [`yarn`](https://yarnpkg.com/getting-started/install) before proceeding.
+
+In order to check the correct installation of all these packages open a terminal and type
+
+```
+npm -v
+node -v
+yarn -v
+```
+
+Then do the following
 
 ```sh
 cd frontend
