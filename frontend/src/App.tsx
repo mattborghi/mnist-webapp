@@ -5,6 +5,7 @@ import { makeStyles } from "@material-ui/core/styles";
 
 // import WritingCanvas from "./components/WritingCanvas";
 import ModelPredict from "./components/ModelPredict";
+import GitHub from "./components/GitHub/GitHub";
 
 const useStyles = makeStyles((theme) => ({
   item: {
@@ -158,6 +159,7 @@ function App() {
       justify="space-around"
       alignItems="center"
     >
+      <GitHub url="https://github.com/mattborghi/mnist-webapp" />
       <Grid className={classes.title} item xs={12}>
         <h1>MNIST Number Predictor</h1>
       </Grid>
